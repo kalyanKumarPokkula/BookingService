@@ -4,13 +4,13 @@ class ServiceError extends Error{
     constructor(
         message = 'Something Went Wrong', 
         explanation = 'Service layer error', 
-        statusCodes = StatusCodes.INTERNAL_SERVER_ERROR
+        statuscodes = StatusCodes.INTERNAL_SERVER_ERROR
         ){
             super()
             this.name = 'ServiceError',
             this.message = message,
             this.explanation = explanation,
-            this.statusCodes = statusCodes
+            this.statuscodes = statuscodes
         }
 }
 
