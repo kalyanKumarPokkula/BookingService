@@ -24,6 +24,22 @@ class BookingRepository{
         }
 
     }
+    async get(bookingId) {
+        try {
+            const booking = await Booking.findByPk(bookingId);
+            return booking;
+        } catch (error) {
+            if(error.name == 'SequelizeValidationError'){
+                throw new ValidationError(error);
+            }
+            throw new AppError(
+                'RepositoryError',
+                'Cannot get booking data',
+                'there was some issue get the booking data , please try again later',
+                StatusCodes.INTERNAL_SERVER_ERROR
+            )
+        }
+    }
 
     async update(data, bookingId){
         try {
